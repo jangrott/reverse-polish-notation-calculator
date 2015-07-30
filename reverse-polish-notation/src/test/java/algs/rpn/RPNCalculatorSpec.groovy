@@ -10,10 +10,11 @@ public class RPNCalculatorSpec extends Specification {
 
     def "The calculation result of simple expression \"#expression\" is #result"() {
         expect:
-        calculator.calculate(expression) == 5
+        calculator.calculate(expression) == result
         where:
         expression  ||  result
         "2 3 +"     ||  5
+        "4 2 -"     ||  2
     }
 
     def "The calculation of expression with value equal to null throws exception"() {
