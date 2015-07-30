@@ -13,4 +13,11 @@ public class RPNCalculatorSpec extends Specification {
         expression  ||  result
         "2 3 +"     ||  5
     }
+
+    def "The calculation of expression with value equal to null throws IllegalArgumentException"() {
+        when:
+        new RPNCalculator().calculate(null);
+        then:
+        thrown IllegalArgumentException
+    }
 }
