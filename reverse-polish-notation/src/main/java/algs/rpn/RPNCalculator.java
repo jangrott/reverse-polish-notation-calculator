@@ -1,8 +1,12 @@
 package algs.rpn;
 
+import algs.rpn.operators.Operator;
+import algs.rpn.operators.impl.*;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.primitives.Doubles;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Stack;
 
 import static com.google.common.base.Preconditions.checkArgument;
@@ -18,8 +22,7 @@ public class RPNCalculator implements Calculator {
 
         String[] elementsOfExpression = expression.split("\\s+");
 
-        Arrays.stream(elementsOfExpression)
-                .forEach(this::evaluate);
+        Arrays.stream(elementsOfExpression).forEach(this::evaluate);
 
         return stack.pop();
     }
@@ -29,27 +32,30 @@ public class RPNCalculator implements Calculator {
         if ((value = Doubles.tryParse(element)) != null) {
             stack.push(value);
         } else {
-            evaluateOperator(element);
+            evaluateOperator(
+                    operators.get(element)
+            );
         }
     }
 
-    private void evaluateOperator(String symbol) {
-        double p = stack.pop();
-        double q = stack.pop();
-
-        switch (symbol) {
-            case "+":
-                stack.push(q + p);
-                break;
-            case "-":
-                stack.push(q - p);
-                break;
-            case "*":
-                stack.push(q * p);
-                break;
-            case "/":
-                stack.push(q / p);
-                break;
+    private void evaluateOperator(Operator operator) {
+        if (operator.isSingleArgument()) {
+            stack.push(
+                    operator.evaluate(stack.pop())
+            );
+            return;
         }
+
+        stack.push(
+                operator.evaluate(stack.pop(), stack.pop())
+        );
     }
+
+    private Map<String, Operator> operators = ImmutableMap.<String, Operator>builder()
+            .put("+", new Addition())
+            .put("-", new Subtraction())
+            .put("*", new Multiplication())
+            .put("/", new Division())
+            .put("sqrt", new SquareRoot())
+            .build();
 }

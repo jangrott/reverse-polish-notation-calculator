@@ -4,7 +4,7 @@ import spock.lang.Specification
 import spock.lang.Unroll;
 
 @Unroll
-public class RPNCalculatorSpec extends Specification {
+class RPNCalculatorSpec extends Specification {
 
     def calculator = new RPNCalculator()
 
@@ -17,6 +17,7 @@ public class RPNCalculatorSpec extends Specification {
         "4 2 -"     ||  2
         "3 3 *"     ||  9
         "9 2 /"     ||  4.5
+        "4 sqrt"    ||  2
     }
 
     def "The calculation of expression with value equal to null throws exception"() {
