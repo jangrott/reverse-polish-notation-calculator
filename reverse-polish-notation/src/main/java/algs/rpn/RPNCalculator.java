@@ -46,6 +46,10 @@ public class RPNCalculator implements Calculator {
                 break;
             case "*":
                 stack.push(q * p);
+                break;
+            case "/":
+                stack.push(q / p);
+                break;
         }
     }
 }

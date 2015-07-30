@@ -16,6 +16,7 @@ public class RPNCalculatorSpec extends Specification {
         "2 3 +"     ||  5
         "4 2 -"     ||  2
         "3 3 *"     ||  9
+        "9 2 /"     ||  4.5
     }
 
     def "The calculation of expression with value equal to null throws exception"() {
