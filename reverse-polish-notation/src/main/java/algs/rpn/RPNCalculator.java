@@ -19,7 +19,7 @@ public class RPNCalculator implements Calculator {
         String[] elementsOfExpression = expression.split("\\s+");
 
         Arrays.stream(elementsOfExpression)
-                .forEach(element -> evaluate(element));
+                .forEach(this::evaluate);
 
         return stack.pop();
     }
@@ -44,6 +44,8 @@ public class RPNCalculator implements Calculator {
             case "-":
                 stack.push(q - p);
                 break;
+            case "*":
+                stack.push(q * p);
         }
     }
 }
