@@ -1,13 +1,13 @@
 package algs.rpn;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static java.util.Objects.isNull;
+import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class RPNCalculator implements Calculator {
 
     @Override
     public double calculate(String expression) {
-        checkArgument(!isNull(expression), "Expression can not be null!");
+        checkArgument(!isNullOrEmpty(expression), "Expression can not be null or empty!");
 
         return 5;
     }
