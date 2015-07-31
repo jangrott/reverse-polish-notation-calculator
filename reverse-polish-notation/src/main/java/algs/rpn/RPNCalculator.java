@@ -1,10 +1,9 @@
 package algs.rpn;
 
 import algs.rpn.operators.Operator;
-import algs.rpn.operators.impl.*;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.primitives.Doubles;
 
+import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Stack;
@@ -43,11 +42,6 @@ public class RPNCalculator implements Calculator {
         return operators.get(e).evaluate(stack);
     }
 
-    private static Map<String, Operator> operators = ImmutableMap.<String, Operator>builder()
-            .put("+", new Addition())
-            .put("-", new Subtraction())
-            .put("*", new Multiplication())
-            .put("/", new Division())
-            .put("sqrt", new SquareRoot())
-            .build();
+    @Inject
+    static Map<String, Operator> operators;
 }

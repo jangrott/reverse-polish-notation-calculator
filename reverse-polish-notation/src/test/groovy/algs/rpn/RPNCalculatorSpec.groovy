@@ -1,5 +1,6 @@
-package algs.rpn;
+package algs.rpn
 
+import dagger.ObjectGraph;
 import spock.lang.Specification
 import spock.lang.Unroll;
 
@@ -7,6 +8,10 @@ import spock.lang.Unroll;
 class RPNCalculatorSpec extends Specification {
 
     def calculator = new RPNCalculator()
+
+    def setupSpec() {
+        ObjectGraph.create(new RPNCalculatorModule()).injectStatics()
+    }
 
     def "The calculation result of simple expression \"#expression\" is #result"() {
         expect:
