@@ -27,13 +27,13 @@ public class RPNCalculator implements Calculator {
         String[] elements = expression.split("\\s+");
 
         Arrays.stream(elements)
-                .map(evaluator)
+                .map(evaluateElement)
                 .forEach(stack::push);
 
         return stack.pop();
     }
 
-    private Function<String, Double> evaluator =
+    private Function<String, Double> evaluateElement =
             e -> parseAndAssignValueOrNull(e) != null ? value : evaluateOperator(e);
 
     private Double parseAndAssignValueOrNull(String e) {
