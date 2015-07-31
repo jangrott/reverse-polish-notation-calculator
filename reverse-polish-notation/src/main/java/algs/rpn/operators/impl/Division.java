@@ -1,11 +1,16 @@
 package algs.rpn.operators.impl;
 
-import algs.rpn.operators.DoubleArgumentOperator;
+import algs.rpn.operators.Operator;
 
-public class Division implements DoubleArgumentOperator {
+import java.util.Stack;
+
+public class Division implements Operator {
 
     @Override
-    public double evaluate(double p, double q) {
+    public double evaluate(Stack<Double> elements) {
+        double p = elements.pop();
+        double q = elements.pop();
+
         return q / p;
     }
 }

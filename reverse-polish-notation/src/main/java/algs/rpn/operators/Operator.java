@@ -1,8 +1,8 @@
 package algs.rpn.operators;
 
+import java.util.Stack;
+
 public interface Operator {
 
-    boolean isSingleArgument();
-
-    double evaluate(double arg, double ... args);
+    double evaluate(Stack<Double> elements);
 }
