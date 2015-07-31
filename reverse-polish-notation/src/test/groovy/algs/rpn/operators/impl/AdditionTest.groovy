@@ -4,27 +4,39 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 @Unroll
-class AdditionTest extends Specification implements OperatorTest{
+class AdditionTest extends Specification implements OperatorTest {
 
     def addition = new Addition()
 
-    def "The result of addition #p to #q is #sum"() {
+    def "The addition result #p to #q is #sum"() {
         setup:
-        setupStack(p, q)
+        List<Double> args = Arrays.asList((double)p, (double)q)
+        clearAndSetupStack(args)
         expect:
-        addition.evaluate(stack) == sum
+        addition.evaluate(elements) == sum
         where:
-        p   ||  q   ||  sum
-        2   ||  3   ||  5
-        3   ||  12  ||  15
-        34  ||  23  ||  57
-        1   ||  0   ||  1
+        p  || q  || sum
+        2  || 3  || 5
+        3  || 12 || 15
+        34 || 23 || 57
+        1  || 0  || 1
+    }
+
+    def "The adding more or less than two elements #args throws exception"() {
+        setup:
+        clearAndSetupStack(args)
+        when:
+        addition.evaluate(elements)
+        then:
+        thrown IllegalArgumentException
+        where:
+        args << [[1, 2, 3], [], [2]]
     }
 }
 
 interface OperatorTest {
 
-    def stack = new Stack<Double>()
+    def elements = new Stack<Double>();
 
-    def setupStack = {double ... args -> args.each { stack.push(it)}}
+    def clearAndSetupStack = { List<Double> args -> elements.clear(); args.each { elements.push(it) } }
 }
