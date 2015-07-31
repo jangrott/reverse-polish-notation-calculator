@@ -18,6 +18,8 @@ public class RPNCalculator implements Calculator {
 
     private Stack<Double> stack = new Stack<>();
 
+    private RPNCalculator() {}
+
     @Override
     public double calculate(String expression) {
         checkArgument(!isNullOrEmpty(expression), "Expression can not be null or empty!");
@@ -44,4 +46,8 @@ public class RPNCalculator implements Calculator {
 
     @Inject
     static Map<String, Operator> operators;
+
+    public static RPNCalculator aRPNCalculator() {
+        return new RPNCalculator();
+    }
 }
