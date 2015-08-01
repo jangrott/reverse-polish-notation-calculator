@@ -22,7 +22,7 @@ class SubtractionTest extends Specification implements OperatorTest {
         1  || 0  || 1
     }
 
-    def "The multiplication more or less than two elements #args throws exception"() {
+    def "The subtracting more or less than two elements #args throws exception"() {
         setup:
         clearAndSetupStack(args)
         when:
