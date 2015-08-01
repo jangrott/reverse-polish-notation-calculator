@@ -10,7 +10,7 @@ class AdditionTest extends Specification implements OperatorTest {
 
     def "The addition result #p to #q is #sum"() {
         setup:
-        List<Double> args = Arrays.asList((double)p, (double)q)
+        List<Double> args = Arrays.asList((double) p, (double) q)
         clearAndSetupStack(args)
         expect:
         addition.evaluate(elements) == sum
@@ -32,11 +32,4 @@ class AdditionTest extends Specification implements OperatorTest {
         where:
         args << [[1, 2, 3], [], [2]]
     }
-}
-
-interface OperatorTest {
-
-    def elements = new Stack<Double>();
-
-    def clearAndSetupStack = { List<Double> args -> elements.clear(); args.each { elements.push(it) } }
 }
