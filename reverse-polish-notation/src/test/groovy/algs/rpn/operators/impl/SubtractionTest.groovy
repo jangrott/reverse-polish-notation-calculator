@@ -21,4 +21,15 @@ class SubtractionTest extends Specification implements OperatorTest {
         32 || 9  || 23
         1  || 0  || 1
     }
+
+    def "The multiplication more or less than two elements #args throws exception"() {
+        setup:
+        clearAndSetupStack(args)
+        when:
+        subtraction.evaluate(elements)
+        then:
+        thrown IllegalArgumentException
+        where:
+        args << [[4, 3, 2], [], [2]]
+    }
 }
