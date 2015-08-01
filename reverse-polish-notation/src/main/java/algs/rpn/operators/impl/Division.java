@@ -15,6 +15,8 @@ public class Division implements Operator {
         double p = elements.pop();
         double q = elements.pop();
 
+        checkArgument(p != 0, "Divisor can not be zero!");
+
         return q / p;
     }
 }
