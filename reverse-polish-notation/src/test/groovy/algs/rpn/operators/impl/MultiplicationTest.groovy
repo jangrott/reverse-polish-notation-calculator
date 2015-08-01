@@ -21,4 +21,15 @@ class MultiplicationTest extends Specification implements OperatorTest {
         27 || 9  || 243
         1  || 1  || 1
     }
+
+    def "The multiplication more or less than two elements #args throws exception"() {
+        setup:
+        clearAndSetupStack(args)
+        when:
+        multiplication.evaluate(elements)
+        then:
+        thrown IllegalArgumentException
+        where:
+        args << [[4, 3, 9], [], [2]]
+    }
 }
