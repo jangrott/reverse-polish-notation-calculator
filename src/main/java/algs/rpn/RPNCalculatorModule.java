@@ -21,6 +21,7 @@ public class RPNCalculatorModule {
                 .put("*", new Multiplication())
                 .put("/", new Division())
                 .put("sqrt", new SquareRoot())
+                .put("^", new Square())
                 .build();
     }
 }
