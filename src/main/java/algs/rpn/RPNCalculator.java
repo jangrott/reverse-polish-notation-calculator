@@ -18,7 +18,8 @@ public class RPNCalculator implements Calculator {
 
     private Stack<Double> stack = new Stack<>();
 
-    private RPNCalculator() {}
+    private RPNCalculator() {
+    }
 
     @Override
     public double calculate(String expression) {

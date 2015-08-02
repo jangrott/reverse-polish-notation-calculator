@@ -50,4 +50,13 @@ class RPNCalculatorSpec extends Specification {
         then:
         thrown IllegalArgumentException
     }
+
+    def "The calculation of invalid expression throws exception"() {
+        when:
+        aRPNCalculator().calculate(expression)
+        then:
+        thrown IllegalArgumentException
+        where:
+        expression << ["5 + 3", "5 3 + 3 - -", "5 + 2 - 2 ^ sqrt 4 + 2 / 3"]
+    }
 }
