@@ -34,7 +34,7 @@ class DivisionTest extends Specification implements OperatorTest {
         args << [[], [2]]
     }
 
-    def "The dividing by zero #args throws exception"() {
+    def "The dividing by zero throws exception"() {
         setup:
         clearAndSetupStack(Arrays.asList((double)4, (double)0))
         when:
