@@ -23,7 +23,7 @@ class DivisionTest extends Specification implements OperatorTest {
         0  || 1  || 0
     }
 
-    def "The dividing more or less than two elements #args throws exception"() {
+    def "The dividing less than two elements #args throws exception"() {
         setup:
         clearAndSetupStack(args)
         when:
@@ -31,7 +31,7 @@ class DivisionTest extends Specification implements OperatorTest {
         then:
         thrown IllegalArgumentException
         where:
-        args << [[4, 3, 3], [], [2]]
+        args << [[], [2]]
     }
 
     def "The dividing by zero #args throws exception"() {

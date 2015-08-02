@@ -22,7 +22,7 @@ class AdditionTest extends Specification implements OperatorTest {
         1  || 0  || 1
     }
 
-    def "The adding more or less than two elements #args throws exception"() {
+    def "The adding less than two elements #args throws exception"() {
         setup:
         clearAndSetupStack(args)
         when:
@@ -30,6 +30,6 @@ class AdditionTest extends Specification implements OperatorTest {
         then:
         thrown IllegalArgumentException
         where:
-        args << [[1, 2, 3], [], [2]]
+        args << [[], [2]]
     }
 }

@@ -10,7 +10,7 @@ public class SquareRoot implements Operator {
 
     @Override
     public double evaluate(Stack<Double> elements) {
-        checkArgument(elements.size() == 1, "Square root requires exactly one element!");
+        checkArgument(elements.size() >= 1, "Square root requires at least one element!");
 
         double p = elements.pop();
 

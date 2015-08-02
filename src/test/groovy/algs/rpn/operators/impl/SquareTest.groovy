@@ -23,14 +23,12 @@ class SquareTest extends Specification implements OperatorTest {
         0  || 0
     }
 
-    def "The square root more or less than one elements #args throws exception"() {
+    def "The square root less than one elements #args throws exception"() {
         setup:
-        clearAndSetupStack(args)
+        clearAndSetupStack([])
         when:
         square.evaluate(elements)
         then:
         thrown IllegalArgumentException
-        where:
-        args << [[4, 3, 9], [], [2, 1]]
     }
 }

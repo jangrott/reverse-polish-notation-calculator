@@ -22,7 +22,7 @@ class SubtractionTest extends Specification implements OperatorTest {
         1  || 0  || 1
     }
 
-    def "The subtracting more or less than two elements #args throws exception"() {
+    def "The subtracting less than two elements #args throws exception"() {
         setup:
         clearAndSetupStack(args)
         when:
@@ -30,6 +30,6 @@ class SubtractionTest extends Specification implements OperatorTest {
         then:
         thrown IllegalArgumentException
         where:
-        args << [[4, 3, 2], [], [2]]
+        args << [[]]
     }
 }

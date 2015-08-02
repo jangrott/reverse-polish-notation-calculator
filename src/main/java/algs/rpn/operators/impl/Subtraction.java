@@ -10,7 +10,7 @@ public class Subtraction implements Operator {
 
     @Override
     public double evaluate(Stack<Double> elements) {
-        checkArgument(elements.size() == 2, "Subtraction requires exactly two elements!");
+        checkArgument(elements.size() >= 2, "Subtraction requires at least two elements!");
 
         double p = elements.pop();
         double q = elements.pop();

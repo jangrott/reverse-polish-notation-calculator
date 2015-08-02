@@ -10,7 +10,7 @@ public class Division implements Operator {
 
     @Override
     public double evaluate(Stack<Double> elements) {
-        checkArgument(elements.size() == 2, "Dividing requires exactly two elements!");
+        checkArgument(elements.size() >= 2, "Dividing requires at least two elements!");
 
         double p = elements.pop();
         double q = elements.pop();

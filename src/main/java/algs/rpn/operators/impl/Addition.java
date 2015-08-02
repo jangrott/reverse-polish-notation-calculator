@@ -10,7 +10,7 @@ public class Addition implements Operator {
 
     @Override
     public double evaluate(Stack<Double> elements) {
-        checkArgument(elements.size() == 2, "Addition requires exactly two elements!");
+        checkArgument(elements.size() >= 2, "Addition requires at least two elements!");
 
         double p = elements.pop();
         double q = elements.pop();
