@@ -4,7 +4,7 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 @Unroll
-class MultiplicationTest extends Specification implements OperatorTest {
+class MultiplicationSpec extends Specification implements OperatorSpec {
 
     def multiplication = new Multiplication()
 

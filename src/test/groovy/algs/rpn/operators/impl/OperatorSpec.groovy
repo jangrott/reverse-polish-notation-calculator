@@ -1,6 +1,6 @@
 package algs.rpn.operators.impl
 
-interface OperatorTest {
+interface OperatorSpec {
 
     def elements = new Stack<Double>();
 

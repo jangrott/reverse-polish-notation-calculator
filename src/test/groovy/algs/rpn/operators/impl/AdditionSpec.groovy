@@ -4,7 +4,7 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 @Unroll
-class AdditionTest extends Specification implements OperatorTest {
+class AdditionSpec extends Specification implements OperatorSpec {
 
     def addition = new Addition()
 

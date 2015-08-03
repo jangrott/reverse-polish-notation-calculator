@@ -4,7 +4,7 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 @Unroll
-class DivisionTest extends Specification implements OperatorTest {
+class DivisionSpec extends Specification implements OperatorSpec {
 
     def division = new Division()
 

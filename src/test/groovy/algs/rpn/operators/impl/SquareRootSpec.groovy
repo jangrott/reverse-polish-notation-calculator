@@ -4,30 +4,29 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 @Unroll
-class SquareTest extends Specification implements OperatorTest {
+class SquareRootSpec extends Specification implements OperatorSpec {
 
-    def square = new Square()
+    def squareRoot = new SquareRoot()
 
-    def "The square result #p is #squareResult"() {
+    def "The square root result #p is #root"() {
         setup:
         List<Double> args = Arrays.asList((double) p)
         clearAndSetupStack(args)
         expect:
-        square.evaluate(elements) == squareResult
+        squareRoot.evaluate(elements) == root
         where:
-        p  || squareResult
-        4  || 16
-        9  || 81
-        12 || 144
-        1  || 1
-        0  || 0
+        p   || root
+        4   || 2
+        9   || 3
+        144 || 12
+        1   || 1
     }
 
     def "The square root less than one elements #args throws exception"() {
         setup:
         clearAndSetupStack([])
         when:
-        square.evaluate(elements)
+        squareRoot.evaluate(elements)
         then:
         thrown IllegalArgumentException
     }
